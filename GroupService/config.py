@@ -18,6 +18,8 @@ class Config(object):
 
     SUPPORT_CHAT = "EsproSupport"  # Your Telegram support group chat username where your users will go and bother you
 
+    SUPPORT_CHANNEL = "EsproUpdate"
+    
     TOKEN = ""  # Get bot token from @BotFather on Telegram
 
     TIME_API_KEY = ""  # Get this value from https://timezonedb.com/api
