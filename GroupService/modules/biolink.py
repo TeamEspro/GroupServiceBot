@@ -1,4 +1,4 @@
-from GroupService import app
+from GroupService import pbot as app
 from pyrogram import Client, filters, enums, errors
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ChatPermissions
 import re
