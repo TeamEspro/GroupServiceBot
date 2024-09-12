@@ -83,7 +83,7 @@ PM_START_TEXT = """
 """
 
 buttons = [
-    [InlineKeyboardButton(text="🔎 Hᴏᴡ Tᴏ Usᴇ? Cᴏᴍᴍᴀɴᴅ Mᴇɴ", callback_data="settings_back_helper")],
+    [InlineKeyboardButton(text="🔎 Hᴏᴡ Tᴏ Usᴇ? Cᴏᴍᴍᴀɴᴅ Mᴇɴ", callback_data="help_back")],
         [
             
             InlineKeyboardButton(text="📨 Sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"),
