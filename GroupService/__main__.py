@@ -34,6 +34,7 @@ from GroupService import (
     OWNER_ID,
     START_IMG,
     SUPPORT_CHAT,
+    SUPPORT_CHANNEL,
     TOKEN,
     StartTime,
     dispatcher,
