@@ -86,8 +86,8 @@ buttons = [
     [InlineKeyboardButton(text="🔎 Hᴏᴡ Tᴏ Usᴇ? Cᴏᴍᴍᴀɴᴅ Mᴇɴ", callback_data="settings_back_helper")],
         [
             
-            InlineKeyboardButton(text="📨 Sᴜᴘᴘᴏʀᴛ", url=config.SUPPORT_CHAT),
-            InlineKeyboardButton(text="📨 Cʜᴀɴɴᴇʟ", url=config.SUPPORT_CHANNEL),
+            InlineKeyboardButton(text="📨 Sᴜᴘᴘᴏʀᴛ", url=f"https://t.me/{SUPPORT_CHAT}"),
+            InlineKeyboardButton(text="📨 Cʜᴀɴɴᴇʟ", url=f"https://t.me/{SUPPORT_CHANNEL}"),
         ],
         [
             InlineKeyboardButton(
@@ -97,7 +97,7 @@ buttons = [
         ],
         [
             
-            InlineKeyboardButton(text=_["S_B_5"], user_id=config.OWNER_ID)
+            InlineKeyboardButton(text="👤 Oᴡɴᴇʀ", url=f"tg://user?id={OWNER_ID}")
         ],
     ]
 
