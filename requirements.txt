@@ -43,8 +43,5 @@ telegraph==2.2.0
 telethon==1.36.0
 tgcrypto==1.2.5
 wikipedia==1.4.0
-google-cloud-vision
-boto3
-azure-cognitiveservices-vision-contentmoderator
 
 
