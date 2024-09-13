@@ -1,3 +1,4 @@
+from GroupService import pbot as app
 from pyrogram import Client, filters
 
 # Filter for forwarded messages
