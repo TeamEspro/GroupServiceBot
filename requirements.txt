@@ -45,4 +45,6 @@ tgcrypto==1.2.5
 wikipedia==1.4.0
 google-cloud-vision
 boto3
-azure-ai-contentmoderator
+azure-cognitiveservices-vision-contentmoderator
+
+
