@@ -407,7 +407,7 @@ def Group_about_callback(update: Update, context: CallbackContext):
                         ),
                         InlineKeyboardButton(
                             text="ɢɪᴛʜᴜʙ",
-                            url="https://github.com/RitikrajX1025",
+                            url="https://github.com/TeamEspro",
                         ),
                     ],
                     [
