@@ -206,8 +206,7 @@ def start(update: Update, context: CallbackContext):
             first_name = update.effective_user.first_name
     # Send the START_IMG first
         update.effective_message.reply_photo(
-            START_IMG,  # URL or file path for the image
-            caption=PM_START_TEXT.format(escape_markdown(first_name), "BOT_NAME"),
+            START_IMG, PM_START_TEXT.format(escape_markdown(first_name), "BOT_NAME"),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
