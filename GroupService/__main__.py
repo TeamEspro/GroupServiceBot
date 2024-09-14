@@ -204,13 +204,12 @@ def start(update: Update, context: CallbackContext):
 
         else:
             first_name = update.effective_user.first_name
-    # Send the START_IMG first
-        update.effective_message.reply_photo(
-            START_IMG, PM_START_TEXT.format(escape_markdown(first_name), "BOT_NAME"),
+        update.effective_message.reply_text(
+                PM_START_TEXT.format(escape_markdown(first_name), BOT_NAME),
                 reply_markup=InlineKeyboardMarkup(buttons),
                 parse_mode=ParseMode.MARKDOWN,
                 timeout=60,
-            )
+        )
     else:
         update.effective_message.reply_photo(
             START_IMG,
