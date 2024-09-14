@@ -203,9 +203,7 @@ def start(update: Update, context: CallbackContext):
                 IMPORTED["rᴜʟᴇs"].send_rules(update, args[0], from_pm=True)
 
         else:
-            
-    first_name = update.effective_user.first_name
-    
+            first_name = update.effective_user.first_name
     # Send the START_IMG first
     if START_IMG:
         update.effective_message.reply_photo(
