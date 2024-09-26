@@ -185,3 +185,60 @@ async def check_bio(client, message):
         # If user has removed the link, reset their warnings
         if user_id in warnings:
             del warnings[user_id]
+
+
+
+@app.on_message(filters.group & filters.text)
+async def delete_links(client, message):
+    chat_id = message.chat.id
+    user_id = message.from_user.id
+    text = message.text
+
+    # Check if the message contains a URL
+    if re.search(url_pattern, text):
+        try:
+            await message.delete()  # Delete the message if it contains a link
+        except errors.MessageDeleteForbidden:
+            await message.reply_text("Please grant me permission to delete messages.")
+            return
+
+        action = punishment.get(chat_id, default_punishment_set)
+        user_name = f"@{message.from_user.username}" if message.from_user.username else f"{message.from_user.first_name} [<code>{user_id}</code>]"
+
+        if action[0] == "warn":
+            if user_id not in warnings:
+                warnings[user_id] = 0
+            warnings[user_id] += 1
+            sent_msg = await message.reply_text(f"{user_name} please do not send links. Warned {warnings[user_id]}/{action[1]}", parse_mode=enums.ParseMode.HTML)
+            
+            if warnings[user_id] >= action[1]:
+                try:
+                    if action[2] == "mute":
+                        await client.restrict_chat_member(chat_id, user_id, ChatPermissions())
+                        keyboard = InlineKeyboardMarkup([[InlineKeyboardButton("Unmute ✅", callback_data=f"unmute_{user_id}")]])
+                        await sent_msg.edit(f"{user_name} has been 🔇 muted for sending links.", reply_markup=keyboard)
+                    elif action[2] == "ban":
+                        await client.ban_chat_member(chat_id, user_id)
+                        keyboard = InlineKeyboardMarkup([[InlineKeyboardButton("Unban ✅", callback_data=f"unban_{user_id}")]])
+                        await sent_msg.edit(f"{user_name} has been 🔨 banned for sending links.", reply_markup=keyboard)
+                except errors.ChatAdminRequired:
+                    await sent_msg.edit(f"I don't have permission to {action[2]} users.")
+        elif action[0] == "mute":
+            try:
+                await client.restrict_chat_member(chat_id, user_id, ChatPermissions())
+                keyboard = InlineKeyboardMarkup([[InlineKeyboardButton("Unmute", callback_data=f"unmute_{user_id}")]])
+                await message.reply_text(f"{user_name} has been 🔇 muted for sending links.", reply_markup=keyboard)
+            except errors.ChatAdminRequired:
+                await message.reply_text("I don't have permission to mute users.")
+        elif action[0] == "ban":
+            try:
+                await client.ban_chat_member(chat_id, user_id)
+                keyboard = InlineKeyboardMarkup([[InlineKeyboardButton("Unban", callback_data=f"unban_{user_id}")]])
+                await message.reply_text(f"{user_name} has been 🔨 banned for sending links.", reply_markup=keyboard)
+            except errors.ChatAdminRequired:
+                await message.reply_text("I don't have permission to ban users.")
+    else:
+        # If user has removed the link, reset their warnings
+        if user_id in warnings:
+            del warnings[user_id]
+                
