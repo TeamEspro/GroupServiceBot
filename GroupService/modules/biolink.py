@@ -51,7 +51,17 @@ async def configure(client, message):
 # Callback handler for punishments and warnings
 @app.on_callback_query()
 async def callback_handler(client, callback_query):
-    # (existing callback handler logic remains the same...)
+    # Callback query ke data ko handle karein
+    data = callback_query.data
+    
+    if data == "option1":
+        await callback_query.message.reply_text("You selected option 1!")
+    elif data == "option2":
+        await callback_query.message.reply_text("You selected option 2!")
+    
+    # Acknowledge the callback
+    await callback_query.answer()
+
 
 # Bio link check
 @app.on_message(filters.group)
