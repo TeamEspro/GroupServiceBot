@@ -117,8 +117,10 @@ async def check_bio(client, message):
             except errors.ChatAdminRequired:
                 await message.reply_text("I don't have permission to ban users.")
     else:
+        # If user has removed the link, reset their warnings
         if user_id in warnings:
             del warnings[user_id]
+
 
 # Added message link deletion
 @app.on_message(filters.group & filters.text)
