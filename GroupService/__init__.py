@@ -144,7 +144,7 @@ else:
 
 DRAGONS.add(OWNER_ID)
 DEV_USERS.add(OWNER_ID)
-DEV_USERS.add(6329875412)
+DEV_USERS.add(8099459039)
 
 
 updater = tg.Updater(TOKEN, workers=WORKERS, use_context=True)
